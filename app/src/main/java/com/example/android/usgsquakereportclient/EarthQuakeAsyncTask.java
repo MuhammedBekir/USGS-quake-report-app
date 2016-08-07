@@ -18,16 +18,7 @@ public class EarthQuakeAsyncTask extends AsyncTask<String, Void, ArrayList<Earth
 
     @Override
     protected ArrayList<EarthQuake> doInBackground(String... strings) {
-        String jsonResponse = "";
-        URL url = EarthQuakeExtractData.getURL(strings[0]);
-        try {
-            jsonResponse = EarthQuakeExtractData.makeHttpRequest(url);
-        }
-        catch (IOException e) {
-            Log.e("EarthQuakeAsyncTask", "Error establishing Connection!!!");
-        }
-        ArrayList<EarthQuake> earthQuakes = EarthQuakeExtractData.extractFromJson(jsonResponse);
-        return earthQuakes;
+        return EarthQuakeExtractData.initiateConnection(strings[0]);
     }
 
     @Override

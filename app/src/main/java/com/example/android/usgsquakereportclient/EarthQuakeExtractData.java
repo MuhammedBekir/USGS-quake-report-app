@@ -20,6 +20,24 @@ import java.util.ArrayList;
 public class EarthQuakeExtractData {
 
     /**
+     * This function initiates the process of making HTTP connection and returns ArrayList of earthquakes.
+     *
+     * @param stringUrl
+     * @return
+     */
+    public static ArrayList<EarthQuake> initiateConnection(String stringUrl) {
+        String jsonResponse = "";
+        URL url = getURL(stringUrl);
+        try {
+            jsonResponse = makeHttpRequest(url);
+        } catch (IOException e) {
+            Log.e("EarthQuakeAsyncTask", "Error establishing Connection!!!");
+        }
+        ArrayList<EarthQuake> earthQuakes = extractFromJson(jsonResponse);
+        return earthQuakes;
+    }
+
+    /**
      * This function take a string url and the URL Object.
      *
      * @param stringUrl
@@ -58,13 +76,11 @@ public class EarthQuakeExtractData {
             if (urlConnection.getResponseCode() == 200) {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
-            }
-            else
-            {
-                Log.e("EarthQuakeExtractData","Error response code : " + urlConnection.getResponseCode());
+            } else {
+                Log.e("EarthQuakeExtractData", "Error response code : " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-                Log.e("EarthQuakeExtractData","Error IOExeception");
+            Log.e("EarthQuakeExtractData", "Error IOExeception");
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();

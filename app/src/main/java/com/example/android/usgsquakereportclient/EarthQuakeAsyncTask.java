@@ -10,19 +10,20 @@ import java.util.ArrayList;
 
 public class EarthQuakeAsyncTask extends AsyncTask<String, Void, ArrayList<EarthQuake>> {
 
-    private EarthQuakeAsyncResponse earthQuakeAsyncResponse;
+    private EarthQuakeAsyncResponse mEarthQuakeAsyncResponse = null;
 
     public EarthQuakeAsyncTask(EarthQuakeAsyncResponse earthQuakeAsyncResponse) {
-        this.earthQuakeAsyncResponse = earthQuakeAsyncResponse;
+        mEarthQuakeAsyncResponse = earthQuakeAsyncResponse;
     }
 
     @Override
     protected ArrayList<EarthQuake> doInBackground(String... strings) {
-        String jsonResponse = null;
+        String jsonResponse = "";
         URL url = EarthQuakeExtractData.getURL(strings[0]);
         try {
             jsonResponse = EarthQuakeExtractData.makeHttpRequest(url);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             Log.e("EarthQuakeAsyncTask", "Error establishing Connection!!!");
         }
         ArrayList<EarthQuake> earthQuakes = EarthQuakeExtractData.extractFromJson(jsonResponse);
@@ -34,7 +35,7 @@ public class EarthQuakeAsyncTask extends AsyncTask<String, Void, ArrayList<Earth
         if (earthQuakes == null) {
             return;
         }
-        earthQuakeAsyncResponse.processFinish(earthQuakes);
+        mEarthQuakeAsyncResponse.processFinish(earthQuakes);
     }
 
 }

@@ -3,6 +3,7 @@ package com.example.android.usgsquakereportclient;
 
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
+import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class EarthQuakeAdapter extends ArrayAdapter<EarthQuake> {
 
@@ -27,23 +30,12 @@ public class EarthQuakeAdapter extends ArrayAdapter<EarthQuake> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.quake_list_item, parent, false);
         }
 
         EarthQuake currentEarthQuake = getItem(position);
-
-        /*
-         * Splitting the location into offset and primary.
-         */
-        String location = currentEarthQuake.getLocation();
-        String location_offset = "";
-        String location_primary = "";
-        if (location.contains("of")) {
-            String[] location_arr = location.split(" of ");
-            location_offset = location_arr[0] + " of";
-            location_primary = location_arr[1];
-        }
 
         TextView magnitudeView = (TextView) convertView.findViewById(R.id.magnitude);
         magnitudeView.setText(formatMagnitude(currentEarthQuake.getMagnitude()));
@@ -54,17 +46,34 @@ public class EarthQuakeAdapter extends ArrayAdapter<EarthQuake> {
         GradientDrawable drawable = (GradientDrawable) magnitudeView.getBackground();
         drawable.setColor(getMagnitudeColor(currentEarthQuake.getMagnitude()));
 
+        /*
+         * Splitting the location into offset and primary.
+         */
+        String location = currentEarthQuake.getLocation();
+        String location_offset;
+        String location_primary;
+        if (location.contains("of")) {
+            String[] location_arr = location.split(" of ");
+            location_offset = location_arr[0] + " of";
+            location_primary = location_arr[1];
+        } else {
+            location_offset = getContext().getString(R.string.near_the);
+            location_primary = location;
+        }
+
         TextView locationOffset = (TextView) convertView.findViewById(R.id.location_offset);
         locationOffset.setText(location_offset);
 
         TextView locationPrimary = (TextView) convertView.findViewById(R.id.location_primary);
         locationPrimary.setText(location_primary);
 
+        Date dateObject = new Date(currentEarthQuake.getDate());
+
         TextView dateView = (TextView) convertView.findViewById(R.id.date);
-        dateView.setText(convertToDate(currentEarthQuake.getDate()));
+        dateView.setText(convertToDate(dateObject));
 
         TextView timeView = (TextView) convertView.findViewById(R.id.time);
-        timeView.setText(convertToTime(currentEarthQuake.getDate()));
+        timeView.setText(convertToTime(dateObject));
 
         return convertView;
     }
@@ -112,7 +121,7 @@ public class EarthQuakeAdapter extends ArrayAdapter<EarthQuake> {
                 magnitudeResourceId = R.color.magnitude10;
                 break;
         }
-        return magnitudeResourceId;
+        return ContextCompat.getColor(getContext(), magnitudeResourceId);
     }
 
 
@@ -133,9 +142,9 @@ public class EarthQuakeAdapter extends ArrayAdapter<EarthQuake> {
      * @param time
      * @return
      */
-    private String convertToTime(long time) {
-        SimpleDateFormat format = new SimpleDateFormat("h:mm a");
-        return format.format(time);
+    private String convertToTime(Date time) {
+        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
+        return timeFormat.format(time);
     }
 
     /**
@@ -144,9 +153,9 @@ public class EarthQuakeAdapter extends ArrayAdapter<EarthQuake> {
      * @param date
      * @return
      */
-    private String convertToDate(long date) {
-        SimpleDateFormat format = new SimpleDateFormat("MMM d, yyyy");
-        return format.format(date);
+    private String convertToDate(Date date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM d, yyyy");
+        return dateFormat.format(date);
     }
 
 

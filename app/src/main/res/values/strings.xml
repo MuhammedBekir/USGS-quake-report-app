@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">USGS Quake Report Client</string>
+    <string name="near_the">Near the</string>
 </resources>

@@ -13,10 +13,11 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ListView listView;
-    private ArrayList<EarthQuake> earthQuakes;
-    private EarthQuakeAdapter adapter;
-    private static final String url = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&limit=10";
+    ListView listView;
+    ArrayList<EarthQuake> earthQuakes;
+    EarthQuakeAdapter adapter;
+    public static final String URL = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&minmag=1&maxmag=8&limit=100";
+    //public static final String URL = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&limit=10";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +28,13 @@ public class MainActivity extends AppCompatActivity {
         adapter = new EarthQuakeAdapter(this, earthQuakes);
         EarthQuakeAsyncTask earthQuakeAsyncTask = new EarthQuakeAsyncTask(new EarthQuakeAsyncResponse() {
             @Override
-            public void processFinish(ArrayList<EarthQuake> earthQuakes) {
+            public void processFinish(ArrayList<EarthQuake> earthQuakeList) {
                 earthQuakes.clear();
-                earthQuakes.addAll(earthQuakes);
+                earthQuakes.addAll(earthQuakeList);
                 listView.setAdapter(adapter);
             }
         });
-        earthQuakeAsyncTask.execute(url);
+        earthQuakeAsyncTask.execute(URL);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

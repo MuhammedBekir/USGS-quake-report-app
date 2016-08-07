@@ -13,47 +13,50 @@
         android:id="@+id/magnitude"
         android:layout_width="@dimen/magnitude_circle_dimension"
         android:layout_height="@dimen/magnitude_circle_dimension"
-        android:layout_gravity="center"
+        android:layout_gravity="center_vertical"
         android:background="@drawable/magnitude_circle"
+        android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/magnitude_circle_corner_radius"
+        android:textSize="@dimen/magnitude_circle_text_size"
         tools:text="1" />
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_weight="3"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/location_offset"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:textAllCaps="true"
-            android:textSize="14sp"
+            android:textSize="12sp"
             tools:text="50KM NW OF" />
 
         <TextView
             android:id="@+id/location_primary"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:ellipsize="end"
             android:fontFamily="sans-serif-medium"
-            android:gravity="top"
+            android:maxLines="2"
             android:textSize="16sp"
             tools:text="Los Angeles, CA" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="1.2"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:orientation="vertical">
 
         <TextView
@@ -62,6 +65,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="bottom|end"
+            android:textSize="12sp"
             tools:text="3:44 PM" />
 
         <TextView
@@ -70,6 +74,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="top|end"
+            android:textSize="12sp"
             tools:text="Aug 5, 2016" />
 
     </LinearLayout>

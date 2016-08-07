@@ -59,8 +59,12 @@ public class EarthQuakeExtractData {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
             }
+            else
+            {
+                Log.e("EarthQuakeExtractData","Error response code : " + urlConnection.getResponseCode());
+            }
         } catch (IOException e) {
-
+                Log.e("EarthQuakeExtractData","Error IOExeception");
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -99,7 +103,7 @@ public class EarthQuakeExtractData {
      * @param jsonData
      * @return
      */
-    public static final ArrayList<EarthQuake> extractFromJson(String jsonData) {
+    public static ArrayList<EarthQuake> extractFromJson(String jsonData) {
         ArrayList<EarthQuake> earthQuakes = new ArrayList<>();
         try {
             JSONObject baseObject = new JSONObject(jsonData);

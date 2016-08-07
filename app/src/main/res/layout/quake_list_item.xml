@@ -10,6 +10,7 @@
     android:paddingStart="@dimen/activity_horizontal_margin">
 
     <TextView
+        android:id="@+id/magnitude"
         android:layout_width="@dimen/magnitude_circle_dimension"
         android:layout_height="@dimen/magnitude_circle_dimension"
         android:layout_gravity="center"
@@ -27,20 +28,22 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/location_offset"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:fontFamily="sans-serif-medium"
             android:gravity="bottom"
             android:textAllCaps="true"
             android:textSize="14sp"
             tools:text="50KM NW OF" />
 
         <TextView
+            android:id="@+id/location_primary"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
             android:gravity="top"
             android:textSize="16sp"
             tools:text="Los Angeles, CA" />
@@ -54,6 +57,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/time"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -61,6 +65,7 @@
             tools:text="3:44 PM" />
 
         <TextView
+            android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"

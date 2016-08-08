@@ -25,6 +25,7 @@ public class EarthQuakeExtractData {
      * @param stringUrl
      * @return
      */
+
     public static ArrayList<EarthQuake> initiateConnection(String stringUrl) {
         String jsonResponse = "";
         URL url = getURL(stringUrl);

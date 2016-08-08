@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
-import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -52,7 +51,7 @@ public class EarthQuakeAdapter extends ArrayAdapter<EarthQuake> {
         String location = currentEarthQuake.getLocation();
         String location_offset;
         String location_primary;
-        if (location.contains("of")) {
+        if (location.contains(" of ")) {
             String[] location_arr = location.split(" of ");
             location_offset = location_arr[0] + " of";
             location_primary = location_arr[1];
@@ -87,6 +86,9 @@ public class EarthQuakeAdapter extends ArrayAdapter<EarthQuake> {
     private int getMagnitudeColor(double magnitude) {
         int magnitudeResourceId;
         switch ((int) Math.floor(magnitude)) {
+            case 0:
+                magnitudeResourceId = R.color.magnitude1;
+                break;
             case 1:
                 magnitudeResourceId = R.color.magnitude1;
                 break;

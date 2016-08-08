@@ -2,10 +2,6 @@ package com.example.android.usgsquakereportclient;
 
 
 import android.os.AsyncTask;
-import android.util.Log;
-
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class EarthQuakeAsyncTask extends AsyncTask<String, Void, ArrayList<EarthQuake>> {

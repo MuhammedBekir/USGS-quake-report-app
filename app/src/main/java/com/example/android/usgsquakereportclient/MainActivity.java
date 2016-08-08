@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -19,12 +18,12 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<EarthQuake> earthQuakes;
     EarthQuakeAdapter adapter;
-    public static final String URL = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&minmag=1&maxmag=8&limit=100";
-    //public static final String URL = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&limit=10";
 
-    View loadingScreenView;
     View noInternetScreenView;
     View noDataView;
+    public static final String URL = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&minmag=1&maxmag=8&limit=100";
+    //public static final String URL = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&limit=20";
+    View loadingScreenView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -101,7 +101,10 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<A
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 EarthQuake earthQuakeCurrent = earthQuakes.get(i);
-                startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(earthQuakeCurrent.getUrl())));
+                Intent intent = new Intent(MainActivity.this, EarthQuakeDetailActivity.class);
+                intent.putExtra("earthQuakeObject", earthQuakeCurrent);
+                startActivity(intent);
+//                startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(earthQuakeCurrent.getUrl())));
             }
         });
     }

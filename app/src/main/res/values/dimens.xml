@@ -5,4 +5,5 @@
     <dimen name="magnitude_circle_corner_radius">18dp</dimen>
     <dimen name="magnitude_circle_dimension">36dp</dimen>
     <dimen name="magnitude_circle_text_size">16sp</dimen>
+    <dimen name="magnitude_circle_big_dimension">200dp</dimen>
 </resources>

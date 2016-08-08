@@ -1,6 +1,9 @@
 package com.example.android.usgsquakereportclient;
 
-public class EarthQuake {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")         //With this notation we are going to hide compiler warning.
+public class EarthQuake implements Serializable {
 
     private double mMagnitude;
     private long mDate;

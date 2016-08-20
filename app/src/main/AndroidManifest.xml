@@ -22,6 +22,14 @@
             android:name=".EarthQuakeDetailActivity"
             android:label="Earthquake detail"
             android:parentActivityName=".MainActivity"></activity>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/settings_title">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"></meta-data>
+        </activity>
     </application>
 
 </manifest>

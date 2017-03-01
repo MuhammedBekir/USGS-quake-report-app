@@ -1,5 +1,5 @@
 # Quake Report
-Quake report is an android application that displays data about earthquakes in U.S. Application fetches data from USGS api endpoints.
+Quake report is an android application that displays data about earthquakes in U.S. Application fetches data from USGS API endpoints.
 
 ## Screenshots
 

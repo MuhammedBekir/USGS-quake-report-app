@@ -12,6 +12,7 @@ Quake report is an android application that displays data about earthquakes in U
 |------------|:------------------|----------|
 | Lenovo A369i | 4.4.2| Lenovo ROM |
 | Redmi Note 3| 6.0|MIUI 7/8 |
+| Redmi Note 4 | 6.0 | MIUI 8 |
 
 ## Maintainers
 The project is maintained by
